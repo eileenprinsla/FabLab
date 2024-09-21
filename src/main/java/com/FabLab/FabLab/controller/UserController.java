@@ -1,9 +1,10 @@
 package com.FabLab.FabLab.controller;
 
-import com.FabLab.FabLab.entity.User;
+import com.FabLab.FabLab.entity.Admin;
+import com.FabLab.FabLab.entity.Users;
 import com.FabLab.FabLab.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,48 +13,31 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService UserService;
+    private UserService userService;
 
-    @PostMapping("/RegisterUser")
-    public ResponseEntity<String> CreateUser(@RequestBody User User){
+    @PostMapping("/user/register")
+    public void RegisterUser(@RequestBody Users user) {
 
-        String response = UserService.CreateUser(User);
-
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-
+        userService.CreateUser(user);
     }
 
-    @DeleteMapping("/DeleteUser")
-    public  ResponseEntity<String> DeleteUser(@RequestParam int id){
+    @PostMapping("/user/login")
+    public void LoginUser(@RequestBody String email, String password) {
 
-        String response = UserService.DeleteUser(id);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
-
+        userService.LoginUser(email, password);
     }
 
-    @DeleteMapping("/DeleteUserByName")
-    public  ResponseEntity<String> DeleteUserByName(@RequestParam String name){
+    @GetMapping("/user/read/{id}")
+    public void ReadUser(@PathVariable int id) {
 
-       String response = UserService.DeleteUserByName(name);
-
-       return new ResponseEntity<>(response, HttpStatus.OK);
-
+        userService.GetUser(id);
     }
 
-    @GetMapping("/ReadUser")
-    public ResponseEntity<User> ReadUser(@RequestParam int id){
+    @DeleteMapping("/user/delete/{email}")
+    public void DeleteUser(@PathVariable String email) {
 
-        return ResponseEntity.ok(UserService.ReadUser(id));
-
+        userService.DeleteUser(email);
     }
 
-    @GetMapping("/ReadUserByName")
-    public ResponseEntity<User> ReadUserByName(@RequestParam String name){
-
-        return ResponseEntity.ok(UserService.ReadUserByName(name));
-
-    }
 
 }

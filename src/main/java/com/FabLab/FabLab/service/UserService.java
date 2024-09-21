@@ -1,59 +1,50 @@
 package com.FabLab.FabLab.service;
 
-import com.FabLab.FabLab.entity.User;
+import com.FabLab.FabLab.entity.Admin;
+import com.FabLab.FabLab.entity.Users;
 import com.FabLab.FabLab.repository.UserRepository;
-import jakarta.persistence.Id;
 import jakarta.transaction.Transactional;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository UserRepository;
 
-    public String CreateUser(User User){
+    private final UserRepository userRepository;
 
-        UserRepository.save(User);
-
-        return "User registered successfully";
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public String DeleteUser(int id){
+    public void CreateUser(Users user) {
 
-        Optional<User> user = UserRepository.findById(id);
-
-        if (user.isPresent()) {
-            var userDetails = user.get();
-            UserRepository.delete(userDetails);
-            return "User removed successfully";
-        }
-
-        return  "";
+        userRepository.save(user);
     }
 
-    @Transactional
-    public String DeleteUserByName(String name){
+    public void LoginUser(String email, String password) {
 
-        UserRepository.DeleteByName(name);
-
-        return "User removed successfully";
+        Users user = userRepository.FindByEmail(email);
     }
 
-    public User ReadUser(int id){
+    public void UpdateUser(Users user) {
 
-         return UserRepository.findById(id).orElse(null);
-
+        userRepository.save(user);
     }
 
-    public User ReadUserByName(String name){
+    public void DeleteUser(String email) {
 
-        return UserRepository.ReadByName(name);
+        Users user = userRepository.FindByEmail(email);
 
+        userRepository.delete(user);
     }
 
+    public void GetUser(int id) {
+
+        userRepository.findById(id);
+    }
 }
+

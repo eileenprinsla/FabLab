@@ -8,8 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "user_register")
-public class User {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +17,6 @@ public class User {
     private String name;
 
     private String mailId;
-
-    private int registerNo;
-
-    private String department;
-
-    private int year;
 
     private String password;
 
