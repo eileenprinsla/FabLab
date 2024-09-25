@@ -9,10 +9,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Users {
 
@@ -22,7 +22,7 @@ public class Users {
 
     private String name;
 
-    private String mailId;
+    private String Email;
 
     private String password;
 

@@ -14,6 +14,7 @@ import java.util.Optional;
 public class UserService {
 
 
+    @Autowired
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -26,8 +27,8 @@ public class UserService {
     }
 
     public void LoginUser(String email, String password) {
-
-        Users user = userRepository.FindByEmail(email);
+//
+//        Users user = userRepository.FindByEmail(email);
     }
 
     public void UpdateUser(Users user) {
@@ -37,9 +38,9 @@ public class UserService {
 
     public void DeleteUser(String email) {
 
-        Users user = userRepository.FindByEmail(email);
-
-        userRepository.delete(user);
+//        Users user = userRepository.FindByEmail(email);
+//
+//        userRepository.delete(user);
     }
 
     public void GetUser(int id) {

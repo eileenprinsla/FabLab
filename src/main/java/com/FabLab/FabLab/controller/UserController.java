@@ -39,5 +39,4 @@ public class UserController {
         userService.DeleteUser(email);
     }
 
-
 }

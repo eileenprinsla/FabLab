@@ -15,7 +15,6 @@ public class AdminController {
     @PostMapping("/admin/register")
     public void RegisterAdmin(@RequestBody Admin admin) {
 
-
         adminService.CreateAdmin(admin);
     }
 

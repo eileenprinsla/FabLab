@@ -22,7 +22,7 @@ public class Techie {
 
     private String name;
 
-    private String mailId;
+    private String Email;
 
     private String password;
 
