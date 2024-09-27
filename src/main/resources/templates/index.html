@@ -2,35 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slide-up {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slide-up 1s ease-out forwards;
+        }
+    </style>
 </head>
-<body>
-<header>
-    <h1>Welcome to My Website</h1>
-</header>
-<nav>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+
+<body class="bg-[#faf7f0]">
+
+<nav class="shadow-md bg-[#faf7f0] h-32 p-4">
+    <div class="max-w-9xl px-1 sm:px-4 lg:px-6 gap-4">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center space-x-2">
+                <img src="assets/images/licet_logo.png" class="h-20 w-20" alt="LICET Logo">
+                <img src="assets/images/fablab_logo.png" class="h-20 w-35" alt="FabLab Logo">
+                <div class="flex flex-col gap-y-2">
+                    <div class="text-blue-700 font-bold text-3xl">LICET</div>
+                    <div class="text-blue-700 font-bold text-3xl">FABLAB</div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center mb-4 my-6 hidden md:flex flex items-center space-x-8">
+                <div class="relative">
+                    <input
+                            type="text"
+                            class="w-96 pl-12 pr-6 py-3 bg-transparent border-4 border-blue-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-700 hover:border-grey-300"
+                            placeholder="Search..."
+                    />
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="absolute left-4 top-3.5 h-6 w-6 text-blue-700"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                    >
+                        <path fill-rule="evenodd" d="M12.9 14.32a8 8 0 111.42-1.42l4.35 4.36a1 1 0 01-1.42 1.42l-4.35-4.36zm-5.9-3.32a6 6 0 1112 0 6 6 0 01-12 0z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <div class="space-x-4">
+                    <a href="#" class="text-blue-700 font-bold hover:text-orange-600">HOME</a>
+                    <a href='http://localhost:8080/templates/login.html' class="text-blue-700 font-bold hover:text-orange-600">SLOT BOOKING</a>
+                    <a href="#" class="text-blue-700 font-bold hover:text-orange-600">CONTACT</a>
+                </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button class="text-gray-700 focus:outline-none" id="menu-btn">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 </nav>
-<main>
-    <section id="home">
-        <h2>Home Section</h2>
-        <p>This is the home section of the webpage.</p>
-    </section>
-    <section id="about">
-        <h2>About Section</h2>
-        <p>This section is about the website.</p>
-    </section>
-    <section id="contact">
-        <h2>Contact Section</h2>
-        <p>This section contains contact information.</p>
-    </section>
-</main>
-<footer>
-    <p>&copy; 2024 Your Name</p>
-</footer>
+
+<div class="max-w-screen mx-auto p-6 h-full" style="background-image: url('assets/images/fab.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;background-blend-mode:color-dodge;">
+    <div class="max-w-screen mx-auto my-10 p-6 h-60">
+        <h2 class="text-5xl text-white font-bold text-center mb-8 my-48 slide-up">EXPLORE - DESIGN - PROTOTYPE</h2>
+    </div>
+</div>
+
+<p class="text-orange-500 my-16 font-bold text-3xl text-center text-lg slide-up w-2/3 mx-auto">
+    Explore the world of fabrication, where imagination shapes reality, and raw materials transform into innovative creations with expert precision.
+    From 3D printing to laser cutting, and CNC machining, dive into a realm where creativity meets technology. Each idea, no matter how small,
+    has the potential to become a tangible masterpiece. Join us on a journey of exploration, design, and prototyping, and witness your concepts
+    take form, layer by layer, cut by cut, until they stand as a testament to your ingenuity.
+</p>
+
+<h1 class="text-blue-700 font-bold text-4xl mt-64 text-center">Our Facilities</h1>
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 px-8 item-center justify-between my-8">
+    <div class="product-card bg-white shadow-lg shadow-blue-700 text-blue-700 hover:shadow-orange-500 hover:text-orange-500 rounded-lg overflow-hidden border-2 border-gray-500 transition-transform transform translate-y-4 opacity-0 hover:scale-105">
+        <img src="assets/images/3d.jpg" alt="3D Printer" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-bold text-center transition duration-300">3D Printer</h2>
+            <p class="text-gray-700 text-center">A machine that creates three-dimensional objects layer by layer from digital designs.</p>
+        </div>
+    </div>
+
+    <div class="product-card bg-white shadow-lg shadow-blue-700 text-blue-700 hover:shadow-orange-500 hover:text-orange-500 rounded-lg overflow-hidden border-2 border-gray-500 transition-transform transform translate-y-4 opacity-0 hover:scale-105">
+        <img src="assets/images/las.jpg" alt="Laser Cutter" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-bold text-center transition duration-300">Laser Cutter</h2>
+            <p class="text-gray-700 text-center">A tool that uses a focused laser beam to cut or engrave materials with high precision.</p>
+        </div>
+    </div>
+
+    <div class="product-card bg-white shadow-lg shadow-blue-700 text-blue-700 hover:shadow-orange-500 hover:text-orange-500 rounded-lg overflow-hidden border-2 border-gray-500 transition-transform transform translate-y-4 opacity-0 hover:scale-105">
+        <img src="assets/images/cnc.jpg" alt="CNC Machine" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-bold text-center transition duration-300">CNC Machine</h2>
+            <p class="text-gray-700 text-center">A computer-controlled machine that automates cutting, drilling, or milling processes for high accuracy.</p>
+        </div>
+    </div>
+
+    <div class="product-card bg-white shadow-lg shadow-blue-700 text-blue-700 hover:shadow-orange-500 hover:text-orange-500 rounded-lg overflow-hidden border-2 border-gray-500 transition-transform transform translate-y-4 opacity-0 hover:scale-105">
+        <img src="assets/images/th.webp" alt="Thinking Corner" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-bold text-center transition duration-300">Thinking Corner</h2>
+            <p class="text-gray-700 text-center">A collaborative space for brainstorming and creative discussions, equipped with resources for innovation.</p>
+        </div>
+    </div>
+
+    <div class="product-card bg-white shadow-lg shadow-blue-700 text-blue-700 hover:shadow-orange-500 hover:text-orange-500 rounded-lg overflow-hidden border-2 border-gray-500 transition-transform transform translate-y-4 opacity-0 hover:scale-105">
+        <img src="assets/images/res.jpg" alt="Resource" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h2 class="text-lg font-bold text-center transition duration-300">Tools</h2>
+            <p class="text-gray-700 text-center">A collection of tools and materials available to support various projects and fabrication activities.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.remove('translate-y-4', 'opacity-0');
+            card.classList.add('translate-y-0', 'opacity-100');
+        }, 100 * index);
+    });
+</script>
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping
 public class UserController {
 
     private UserService userService;
@@ -21,7 +22,7 @@ public class UserController {
         userService.CreateUser(user);
     }
 
-    @PostMapping("/user/login")
+    @PostMapping("user/login")
     public void LoginUser(@RequestBody String email, String password) {
 
         userService.LoginUser(email, password);
