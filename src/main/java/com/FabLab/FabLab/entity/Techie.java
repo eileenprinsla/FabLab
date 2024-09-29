@@ -22,13 +22,9 @@ public class Techie {
 
     private String name;
 
-    private String Email;
+    private String email;
 
     private String password;
 
+    private String role;
 }
-
-
-
-
-

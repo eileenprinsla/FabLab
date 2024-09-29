@@ -1,27 +1,25 @@
 package com.FabLab.FabLab.service;
 
-import com.FabLab.FabLab.entity.Admin;
 import com.FabLab.FabLab.entity.Techie;
-import com.FabLab.FabLab.repository.AdminRepository;
 import com.FabLab.FabLab.repository.TechieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TechieService {
 
-    @Autowired
-    private TechieRepository techieRepository;
+    private final TechieRepository techieRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public TechieService(TechieRepository techieRepository) {
+    public TechieService(TechieRepository techieRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.techieRepository = techieRepository;
+        this.passwordEncoder = bCryptPasswordEncoder;
     }
 
-    public  void CreateAdmin(Techie techie){
-        techieRepository.save(techie);
+    public Techie CreateAdmin(Techie techie) {
+        String hashedPassword = passwordEncoder.encode(techie.getPassword());
+        techie.setPassword(hashedPassword);
+        return   techieRepository.save(techie);
     }
 
-    public  void LoginAdmin(String email, String Password){
-//        Techie techie = techieRepository.FindByEmail(email);
-    }
 }

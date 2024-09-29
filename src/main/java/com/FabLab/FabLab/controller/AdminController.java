@@ -5,23 +5,26 @@ import com.FabLab.FabLab.entity.Admin;
 import com.FabLab.FabLab.service.AdminService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AdminController {
 
-    private AdminService adminService;
+    private final AdminService adminService;
 
-    @PostMapping("/admin/register")
-    public void RegisterAdmin(@RequestBody Admin admin) {
-
-        adminService.CreateAdmin(admin);
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
     }
 
-    @PostMapping("/admin/authenticate")
-    public void LoginAdmin(@RequestBody LoginDetail loginDetail) {
+    @PostMapping("/admin/register")
+    public Admin RegisterAdmin(@RequestBody Admin admin) {
+        return adminService.CreateAdmin(admin);
+    }
 
-        adminService.LoginAdmin(loginDetail.getEmail(), loginDetail.getPassword());
+    @PostMapping("/users/authenticate")
+    public String LoginUser(@RequestBody LoginDetail loginDetail) {
+      return  adminService.LoginAdmin(loginDetail.getEmail(), loginDetail.getPassword());
     }
 
 }

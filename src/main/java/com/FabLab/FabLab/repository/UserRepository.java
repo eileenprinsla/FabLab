@@ -10,8 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-@EnableJpaRepositories
+@Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
-
-//    Users FindByEmail(String email);
+    Users findByEmail(String email);
 }

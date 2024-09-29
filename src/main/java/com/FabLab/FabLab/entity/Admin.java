@@ -2,10 +2,7 @@ package com.FabLab.FabLab.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,8 +17,10 @@ public class Admin {
 
     private String name;
 
-    private String Email;
+    private String email;
 
     private String password;
+
+    private String role;
 
 }
