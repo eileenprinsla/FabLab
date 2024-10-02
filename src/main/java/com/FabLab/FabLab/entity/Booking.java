@@ -9,26 +9,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Users {
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private String bookingID;
 
-    private String email;
+    private String date;
 
-    private String password;
+    private String userID;
 
-    private String role;
-
-    private String year;
-
-    private String contact;
+    private String slotID;
 }
+
+
+

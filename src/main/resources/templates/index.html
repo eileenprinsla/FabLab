@@ -56,7 +56,8 @@
 
                 <div class="space-x-4">
                     <a href="#" class="text-blue-700 font-bold hover:text-orange-600">HOME</a>
-                    <a href='http://localhost:8080/templates/login.html' class="text-blue-700 font-bold hover:text-orange-600">SLOT BOOKING</a>
+                    <!-- Slot Booking Link with Onclick Event -->
+                    <a  onclick="redirectToLogin()" class="text-blue-700 font-bold hover:text-orange-600">SLOT BOOKING</a>
                     <a href="#" class="text-blue-700 font-bold hover:text-orange-600">CONTACT</a>
                 </div>
             </div>
@@ -143,6 +144,15 @@
             card.classList.add('translate-y-0', 'opacity-100');
         }, 100 * index);
     });
+
+
+
+
+
+    // Function to redirect to login.html when SLOT BOOKING is clicked
+    function redirectToLogin() {
+        window.location.href = 'templates/login.html';
+    }
 </script>
 </body>
 </html>
