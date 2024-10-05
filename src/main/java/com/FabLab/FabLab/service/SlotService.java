@@ -16,21 +16,23 @@ public class SlotService {
     private SlotRepository slotRepository;
 
 
-    public Slot CreateSlot(String slotName, String slotID, MultipartFile image) throws IOException {
+    public void CreateSlot(String slotName, String slotID, MultipartFile image) throws IOException {
         Slot slot = new Slot();
         slot.setSlotName(slotName);
         slot.setSlotID(slotID);
         slot.setImage(image.getBytes());
-        return slotRepository.save(slot);
+        slotRepository.save(slot);
     }
 
-    // Retrieve slot by ID
-    public Optional<Slot> GetSlot(int id) {
+
+    public Optional<Slot> ReadSlot(int id) {
+
         return slotRepository.findById(id);
     }
 
 
     public void DeleteSlot(int id) {
+
         slotRepository.deleteById(id);
     }
 }

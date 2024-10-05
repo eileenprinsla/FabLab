@@ -5,21 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Booking {
+public class TCBooking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String bookingID;
+    private String tcbookingID;
 
     private String userID;
 
@@ -28,19 +29,21 @@ public class Booking {
     private LocalDate date;
 
     @Lob
-    private byte[] modelFile;
+    private String purpose;
 
-    @Lob
-    private String description;
+    private LocalDate slotDate;
 
-    private LocalDate deadline;
+    private LocalTime startTime;
 
-    @Lob
-    private String specification;
+    private LocalTime endTime;
 
-    @Lob
-    private byte[] countFile;
+    private int memberCount;
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "bookingID")
+    private List<TCuser> TCTeam;
 }
+
 
 
 
