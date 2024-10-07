@@ -1,6 +1,8 @@
 package com.FabLab.FabLab.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +20,7 @@ public class TCBooking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String tcbookingID;
+    private int tcbookingID;
 
     private String userID;
 
@@ -33,15 +33,17 @@ public class TCBooking {
 
     private LocalDate slotDate;
 
+    @NotNull
     private LocalTime startTime;
 
+    @NotNull
+    @Max(value = 18 * 60 + 30, message = "End time cannot exceed 18:30")
     private LocalTime endTime;
 
     private int memberCount;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "bookingID")
-    private List<TCuser> TCTeam;
+    @OneToMany(mappedBy = "tcBooking", cascade = CascadeType.ALL)
+    private List<TCuser> tcTeam;
 }
 
 

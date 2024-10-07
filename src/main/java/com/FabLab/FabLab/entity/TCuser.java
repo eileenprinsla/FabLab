@@ -1,9 +1,6 @@
 package com.FabLab.FabLab.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class TCuser{
@@ -12,11 +9,13 @@ public class TCuser{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int bookingID;
-
     private String name;
 
     private String email;
 
     private String regNo;
+
+    @ManyToOne
+    @JoinColumn(name = "tcbookingID", nullable = false)
+    private TCBooking tcBooking;
 }
