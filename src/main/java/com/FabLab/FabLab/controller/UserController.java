@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping("/user/read/{id}")
     public ResponseEntity<Users> ReadUser(@PathVariable int id) {
+
         return ResponseEntity.ok(userService.GetUser(id));
     }
 
@@ -36,35 +37,35 @@ public class UserController {
         return ResponseEntity.ok(allUsers);
     }
 
-    @PutMapping("user/update/email/{id}")
+    @PutMapping("/user/update/email/{id}")
     public ResponseEntity<Users> UpdateUserEmail(@PathVariable int id,@RequestBody String email){
 
         Users user = userService.UpdateEmail(id, email);
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("user/update/password/{id}")
+    @PutMapping("/user/update/password/{id}")
     public ResponseEntity<Users> UpdateUserPassword(@PathVariable int id,@RequestBody String password){
 
         Users user = userService.UpdatePassword(id, password);
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("user/update/contact/{id}")
+    @PutMapping("/user/update/contact/{id}")
     public ResponseEntity<Users> UpdateUserContact(@PathVariable int id,@RequestBody String contact){
 
         Users user = userService.UpdateContact(id, contact);
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("user/update/name/{id}")
+    @PutMapping("/user/update/name/{id}")
     public ResponseEntity<Users> UpdateUserName(@PathVariable int id,@RequestBody String name){
 
         Users user = userService.UpdateName(id, name);
         return ResponseEntity.ok(user);
     }
 
-    @PutMapping("user/update/year/{id}")
+    @PutMapping("/user/update/year/{id}")
     public ResponseEntity<Users> UpdateUserYear(@PathVariable int id,@RequestBody String year){
 
         Users user = userService.UpdateYear(id,year);

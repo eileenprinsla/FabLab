@@ -33,4 +33,25 @@ public class TechieService {
         return techieRepository.findAll();
     }
 
+    public Techie UpdateEmail(int id, String email){
+
+        Techie techie = techieRepository.findById(id).orElse(null);
+        techie.setEmail(email);
+        return techieRepository.save(techie);
+    }
+
+    public Techie UpdatePassword(int id, String password){
+
+        Techie techie = techieRepository.findById(id).orElse(null);
+        techie.setPassword(password);
+        return techieRepository.save(techie);
+    }
+
+    public Techie UpdateName(int id, String name){
+
+        Techie techie = techieRepository.findById(id).orElse(null);
+        techie.setName(name);
+        return techieRepository.save(techie);
+    }
+
 }

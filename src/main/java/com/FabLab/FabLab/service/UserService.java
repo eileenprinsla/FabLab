@@ -30,14 +30,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-//    public void UpdateUser(Users user) {
-//
-//        userRepository.save(user);
-//    }
-//
-//    public void DeleteUser(String email) {
-//
-//    }
 
     public Users GetUser(int id) {
 

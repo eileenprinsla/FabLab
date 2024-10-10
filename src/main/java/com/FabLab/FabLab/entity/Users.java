@@ -24,6 +24,8 @@ public class Users {
 
     private String email;
 
+    private String regNo;
+
     private String password;
 
     private String role;

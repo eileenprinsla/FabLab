@@ -38,7 +38,7 @@ public class TCBookingController {
         return ResponseEntity.ok(tcbookingList);
     }
 
-    @GetMapping("/tcbook/delete/{tcbookingID}")
+    @DeleteMapping("/tcbook/delete/{tcbookingID}")
     public ResponseEntity<String> DeleteRequest(@PathVariable String tcbookingID){
 
         tcbookingService.DeleteRequest(tcbookingID);
