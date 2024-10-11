@@ -1,13 +1,12 @@
 package com.FabLab.FabLab.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,4 +32,10 @@ public class Users {
     private String year;
 
     private String contact;
+
+    @OneToMany
+    private List<Booking> bookings;
+
+    @OneToMany
+    private List<TCBooking> tcBookings;
 }

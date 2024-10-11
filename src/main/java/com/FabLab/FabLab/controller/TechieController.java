@@ -1,55 +1,38 @@
 package com.FabLab.FabLab.controller;
 
+import com.FabLab.FabLab.dto.AppResponse;
 import com.FabLab.FabLab.entity.Techie;
 import com.FabLab.FabLab.entity.Users;
+import com.FabLab.FabLab.service.BookingService;
 import com.FabLab.FabLab.service.TechieService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 public class TechieController {
 
     private final TechieService techieService;
+    private final BookingService bookingService;
 
-    public TechieController(TechieService techieService) {
-
+    public TechieController(TechieService techieService, BookingService bookingService) {
         this.techieService = techieService;
-    }
-    @PostMapping("/techie/register")
-    public Techie RegisterTechie(@RequestBody Techie techie) {
-
-        return techieService.CreateAdmin(techie);
-    }
-
-    @GetMapping("/techie/read/all")
-    public ResponseEntity<List<Techie>> ReadAllTechie(){
-
-        List<Techie> allTechie = techieService.GetAllTechie();
-        return ResponseEntity.ok(allTechie);
-    }
-
-    @PutMapping("/techie/update/email/{id}")
-    public ResponseEntity<Techie> UpdateTechieEmail(@PathVariable int id,@RequestBody String email){
-
-        Techie techie = techieService.UpdateEmail(id, email);
-        return ResponseEntity.ok(techie);
-    }
-
-    @PutMapping("/techie/update/password/{id}")
-    public ResponseEntity<Techie> UpdateTechiePassword(@PathVariable int id,@RequestBody String password){
-
-        Techie techie = techieService.UpdatePassword(id, password);
-        return ResponseEntity.ok(techie);
-    }
-
-    @PutMapping("/techie/update/name/{id}")
-    public ResponseEntity<Techie> UpdateTechieName(@PathVariable int id,@RequestBody String name){
-
-        Techie techie = techieService.UpdateName(id, name);
-        return ResponseEntity.ok(techie);
+        this.bookingService = bookingService;
     }
 
 
+    @GetMapping("/techies/slots/{id}")
+   public void readAssignedSlot(@PathVariable  int id){
+       techieService.fetchAssignedSlots(id);
+   }
+
+    @PutMapping("admin/status/update")
+    public ResponseEntity<AppResponse<String>> UpdateBookedSlotStatus(@RequestParam Integer id, @RequestBody String status){
+        bookingService.updateBookedSlotStatus(id , status);
+        AppResponse<String> response = new AppResponse<>(HttpStatus.OK.value(), "Status updated successfully");
+        return ResponseEntity.ok(response);
+    }
 }

@@ -23,8 +23,7 @@ public class Slot {
 
     private String slotName;
 
-    private String slotID;
-
     @Lob
     private byte[] image;
+
 }

@@ -20,11 +20,13 @@ public class TCBooking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tcbookingID;
+    private int Id;
 
-    private String userID;
+    private String name;
 
-    private String slotID;
+    private String email;
+
+    private String regNo;
 
     private LocalDate date;
 
@@ -33,17 +35,18 @@ public class TCBooking {
 
     private LocalDate slotDate;
 
-    @NotNull
+//    @NotNull
     private LocalTime startTime;
 
-    @NotNull
-    @Max(value = 18 * 60 + 30, message = "End time cannot exceed 18:30")
+//    @NotNull
+//    @Max(value = 18 * 60 + 30, message = "End time cannot exceed 18:30")
     private LocalTime endTime;
 
     private int memberCount;
 
-    @OneToMany(mappedBy = "tcBooking", cascade = CascadeType.ALL)
-    private List<TCuser> tcTeam;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
 }
 
 

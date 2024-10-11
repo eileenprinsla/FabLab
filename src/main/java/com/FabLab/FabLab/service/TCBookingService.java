@@ -12,27 +12,25 @@ import java.util.List;
 @Service
 public class TCBookingService {
 
-    @Autowired
-    private TCBookingRepository tcbookingRepository;
+    private final TCBookingRepository tcbookingRepository;
+
+    public TCBookingService(TCBookingRepository tcbookingRepository) {
+        this.tcbookingRepository = tcbookingRepository;
+    }
 
     public void CreateRequest(TCBooking tcbooking){
 
         tcbookingRepository.save(tcbooking);
     }
 
-    public TCBooking ReadRequest(String tcbookingID) {
+    public TCBooking ReadRequest(String id) {
 
-        return tcbookingRepository.findById(Integer.valueOf(tcbookingID)).orElse(null);
+        return tcbookingRepository.findById(Integer.valueOf(id)).orElse(null);
     }
 
     public List<TCBooking> GetAllBooking() {
 
         return tcbookingRepository.findAll();
-    }
-
-    public void DeleteRequest(String tcbookingID){
-
-        tcbookingRepository.deleteById(Integer.valueOf(tcbookingID));
     }
 
 }

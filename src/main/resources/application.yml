@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/fablab
     username: postgres
-    password: root
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update

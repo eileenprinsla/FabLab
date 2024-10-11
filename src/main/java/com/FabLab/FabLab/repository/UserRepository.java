@@ -15,9 +15,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
     Users findByEmail(String email);
-
-    @Override
-    List<Users> findAll();
 }
 
 

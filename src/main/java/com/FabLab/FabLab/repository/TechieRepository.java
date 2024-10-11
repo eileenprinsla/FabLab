@@ -8,12 +8,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TechieRepository extends JpaRepository<Techie, Integer> {
 
     Techie findByEmail(String email);
 
-    List<Techie> findAll();
+    // Find all active techies
+    List<Techie> findByIsActiveTrue();
+
+    // Find an active techie by id
+    Optional<Techie> findByIdAndIsActiveTrue(Integer id);
 }
 
