@@ -52,6 +52,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/users/slot/read/all")
     public ResponseEntity<AppResponse<List<Slot>>> readAllSlot(){
         var response =  slotService.ReadAllSlots();
         AppResponse<List<Slot>> responseData = new AppResponse<>(HttpStatus.OK.value(), response);

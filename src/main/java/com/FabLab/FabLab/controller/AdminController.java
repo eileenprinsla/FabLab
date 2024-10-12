@@ -87,7 +87,7 @@ public class AdminController {
         }
     }
 
-    @PutMapping("admin/status/update")
+    @PutMapping("/admin/status/update")
     public ResponseEntity<AppResponse<String>> UpdateBookedSlotStatus(@RequestParam Integer id, @RequestBody String status){
         bookingService.updateBookedSlotStatus(id , status);
         AppResponse<String> response = new AppResponse<>(HttpStatus.OK.value(), "Status updated successfully");
