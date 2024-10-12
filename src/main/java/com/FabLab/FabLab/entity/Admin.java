@@ -2,14 +2,14 @@ package com.FabLab.FabLab.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "user_register")
-public class User {
+@Entity
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +17,10 @@ public class User {
 
     private String name;
 
-    private String mailId;
-
-    private int registerNo;
-
-    private String department;
-
-    private int year;
+    private String email;
 
     private String password;
+
+    private String role;
 
 }

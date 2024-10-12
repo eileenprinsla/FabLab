@@ -4,17 +4,21 @@ import com.FabLab.FabLab.entity.Admin;
 import com.FabLab.FabLab.entity.Techie;
 import com.FabLab.FabLab.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Integer> {
-    Users findByEmail(String email);
-}
+public interface TechieRepository extends JpaRepository<Techie, Integer> {
 
+    Techie findByEmail(String email);
+
+    // Find all active techies
+    List<Techie> findByIsActiveTrue();
+
+    // Find an active techie by id
+    Optional<Techie> findByIdAndIsActiveTrue(Integer id);
+}
 

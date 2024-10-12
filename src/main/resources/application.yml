@@ -4,10 +4,39 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/fablab
     username: postgres
-    password: root
+    password: postgres
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  main:
+    allow-circular-references: true
+
+security:
+  jwt:
+    secret-key: HMSEC55D0796NYYGBN223NQQiOPK9KNQOALN098772NLANNWJBW
+    expiration-time: 20m
+
+
+
+logging:
+  level:
+    root: INFO
+    com.FabLab.FabLab: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+
+  spring.mail.host : smtp.gmail.com
+  spring.mail.port : 587
+  spring.mail.username : prinslaeileen@gmail.com
+  spring.mail.password: qlmx nvys pszy rhjo
+  spring.mail.properties.mail.smtp.auth : true
+  spring.mail.properties.mail.smtp.starttls.enable : true
+
+
